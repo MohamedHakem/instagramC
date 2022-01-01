@@ -1,4 +1,5 @@
 import { getProviders, signIn as SignIntoProvider } from "next-auth/react";
+import Image from "next/image";
 
 // On browser,
 function signin({ providers }) {
@@ -9,14 +10,14 @@ function signin({ providers }) {
           className="hidden lg:flex flex-col items-center mr-0
       justify-center py-2 pl-14 text-center"
         >
-          <img
+          <Image
             src="https://raw.githubusercontent.com/MohamedHakem/InstaFrame/main/AI-fake-faces/insta-hm-bg.JPG"
             alt=""
           />
         </div>
         <div className="flex flex-col items-center justify-center py-2 px-6 mx-6 lg:pr-14 lg:pl-6 text-center max-w-md">
           <div className="bg-white items-center border border-gray-200 p-10 flex flex-col justify-center">
-            <img
+            <Image
               className="w-80"
               src="https://links.papareact.com/ocw"
               alt=""

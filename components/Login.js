@@ -1,4 +1,5 @@
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 // On browser,
 export default function Login({ providers }) {
@@ -9,7 +10,7 @@ export default function Login({ providers }) {
           className="hidden lg:flex flex-col items-center mr-0
       justify-center py-2 pl-14 text-center"
         >
-          <img
+          <Image
             priority="true"
             src="https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/insta-hm-bg.jpg"
             alt=""
@@ -17,7 +18,7 @@ export default function Login({ providers }) {
         </div>
         <div className="flex flex-col items-center justify-center py-2 px-6 mx-6 lg:pr-14 lg:pl-6 text-center max-w-md">
           <div className="bg-white items-center border border-gray-200 p-10 flex flex-col justify-center">
-            <img
+            <Image
               className="w-80"
               priority="true"
               src="https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/2880px-Instagram_logo.png"

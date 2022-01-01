@@ -14,7 +14,7 @@ export default function Posts({ session }) {
           setPosts(snapshot.docs);
         }
       ),
-    [db]
+    []
   );
 
   return (
@@ -25,7 +25,7 @@ export default function Posts({ session }) {
           id={post.id}
           username={post.data().username}
           userImg={post.data().profileImg}
-          img={post.data().image}
+          image={post.data().image}
           caption={post.data().caption}
           timestamp={post.data().timestamp}
         />

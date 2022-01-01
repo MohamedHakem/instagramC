@@ -32,6 +32,7 @@ export default function Header() {
             src="https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/2880px-Instagram_logo.png"
             layout="fill"
             objectFit="contain"
+            alt=""
           />
         </div>
 
@@ -80,7 +81,7 @@ export default function Header() {
                   className="h-10 inline-flex items-center align-middle z-10 cursor-pointer"
                   onClick={() => setShow(!show)}
                 >
-                  <img
+                  <Image
                     className="h-8 rounded-full cursor-pointer z-10"
                     src={session?.user?.image}
                     alt="profile pic"
