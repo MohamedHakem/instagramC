@@ -1,12 +1,11 @@
 import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
 
 function MiniProfile() {
   const { data: session } = useSession();
 
   return (
     <div className="flex grow justify-start">
-      <Image
+      <img
         className="rounded-full w-16 h-16 border p-[2px]"
         src={session?.user?.image}
         alt=""

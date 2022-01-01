@@ -5,14 +5,11 @@ import { useCallback, useEffect } from "react";
 
 export default function Header({ setShow }) {
   // handleEscape and the useEffect are just for the compatibility and cleaning up everything.
-  const handleEscape = useCallback(
-    (e) => {
-      if (e.keyCode === 27) {
-        setShow(false);
-      }
-    },
-    [setShow]
-  );
+  const handleEscape = useCallback((e) => {
+    if (e.keyCode === 27) {
+      setShow(false);
+    }
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", handleEscape);

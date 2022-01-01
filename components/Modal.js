@@ -13,7 +13,6 @@ import {
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
-import Image from "next/image";
 
 export default function Modal() {
   const { data: session } = useSession();
@@ -125,7 +124,7 @@ export default function Modal() {
                 <hr />
 
                 {selectedFile ? (
-                  <Image
+                  <img
                     className="w-full object-contain cursor-pointer"
                     onClick={() => setSelectedFile(null)}
                     src={selectedFile}
@@ -182,6 +181,7 @@ export default function Modal() {
                       type="button"
                       disabled={!selectedFile}
                       onClick={uploadPost}
+                      disabled={!selectedFile}
                       className="inline-flex justify-center w-full relative rounded-md 
                 border border-transparent shadow-sm px-4 py-3 bg-blue-400
                 text-base font-medium text-white hover:bg-red-700

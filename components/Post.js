@@ -23,9 +23,8 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import Moment from "react-moment";
-import Image from "next/image";
 
-function Post({ id, username, userImg, image, caption, timestamp }) {
+function Post({ id, username, userImg, img, caption, timestamp }) {
   const { data: session } = useSession();
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
@@ -39,7 +38,7 @@ function Post({ id, username, userImg, image, caption, timestamp }) {
         query(collection(db, "posts", id, "comments"), orderBy("timestamp")),
         (snapshot) => setComments(snapshot.docs)
       ),
-    [id]
+    [db, id]
   );
 
   // on reload, set all the likes from firestore
@@ -48,7 +47,7 @@ function Post({ id, username, userImg, image, caption, timestamp }) {
       onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
         setLikes(snapshot.docs)
       ),
-    [id]
+    [db, id]
   );
 
   // on reload, set hasLiked for all the posts
@@ -57,7 +56,7 @@ function Post({ id, username, userImg, image, caption, timestamp }) {
       setHasLiked(
         likes.findIndex((like) => like.id === session?.user?.uid) !== -1
       ),
-    [likes, session?.user?.uid]
+    [likes]
   );
 
   // on like button onClick, add the uid to the liked list on firestore for this post
@@ -93,7 +92,7 @@ function Post({ id, username, userImg, image, caption, timestamp }) {
       {/* post header */}
       <div className="flex items-center p-3">
         <div>
-          <Image
+          <img
             src={userImg}
             className="rounded-full h-12 w-12
             object-contain border p-1 mr-3"
@@ -109,7 +108,7 @@ function Post({ id, username, userImg, image, caption, timestamp }) {
         <DotsHorizontalIcon className="h-5 cursor-pointer" />
       </div>
 
-      <Image src={image} className="object-cover w-full" alt="" />
+      <img src={img} className="object-cover w-full" alt="" />
 
       {/* Buttons */}
       {session && (
@@ -143,7 +142,7 @@ function Post({ id, username, userImg, image, caption, timestamp }) {
         <div className="ml-8 h-18 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
           {comments.map((comment) => (
             <div key={comment.id} className="flex items-center space-x-2 mb-3">
-              <Image
+              <img
                 className="h-7 rounded-full"
                 src={comment.data().userImage}
                 alt=""
