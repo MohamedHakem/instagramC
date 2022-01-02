@@ -181,7 +181,6 @@ export default function Modal() {
                       type="button"
                       disabled={!selectedFile}
                       onClick={uploadPost}
-                      disabled={!selectedFile}
                       className="inline-flex justify-center w-full relative rounded-md 
                 border border-transparent shadow-sm px-4 py-3 bg-blue-400
                 text-base font-medium text-white hover:bg-red-700

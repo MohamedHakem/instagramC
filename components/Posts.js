@@ -14,7 +14,7 @@ export default function Posts({ session }) {
           setPosts(snapshot.docs);
         }
       ),
-    [db]
+    []
   );
 
   return (

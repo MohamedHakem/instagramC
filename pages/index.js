@@ -9,7 +9,7 @@ export default function Home({ providers }) {
   const { data: session } = useSession();
 
   return (
-    <div className="bg-back_bg h-screen overflow-y-auto scrollbar-hide">
+    <div className="bg-back_bg h-screen overflow-y-auto">
       <Head>
         <title>Instagram clone by Hakem</title>
         <link rel="icon" href="/favicon.ico" />

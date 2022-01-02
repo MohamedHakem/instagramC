@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const suggestions = [
   {
     username: "Skylar.Schmitt36",
@@ -46,10 +48,16 @@ function Suggestions() {
           key={profile.id}
           className="flex items-center justify-between mt-3"
         >
-          <img
-            className="w-10 h-10 rounded-full border p-[2px]"
-            src={profile.avatar}
-          />
+          <div className="border rounded-full">
+            <div className="relative w-[34px] h-[34px] m-[2px]">
+              <Image
+                className="rounded-full"
+                src={profile.avatar}
+                layout="fill"
+                alt="profile pic"
+              />
+            </div>
+          </div>
 
           <div className="flex-1 ml-2  object-contain">
             <h2 className="font-semibold text-sm">{profile.username}</h2>

@@ -32,6 +32,7 @@ export default function Header() {
             src="https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/2880px-Instagram_logo.png"
             layout="fill"
             objectFit="contain"
+            alt=""
           />
         </div>
 
@@ -75,14 +76,15 @@ export default function Header() {
                 className="navBtn z-10 cursor-pointer"
               />
               <HeartIcon className="navBtn z-10 cursor-pointer" />
-              <div className="relative inline-block ml-2 justify-center cursor-pointer items-baseline">
+              <div className="relative inline-block h-8 ml-2 justify-center cursor-pointer items-baseline">
                 <button
-                  className="h-10 inline-flex items-center align-middle z-10 cursor-pointer"
+                  className="relative w-8 h-8 inline-flex items-center align-middle z-10 cursor-pointer"
                   onClick={() => setShow(!show)}
                 >
-                  <img
-                    className="h-8 rounded-full cursor-pointer z-10"
+                  <Image
+                    className="rounded-full cursor-pointer z-10"
                     src={session?.user?.image}
+                    layout="fill"
                     alt="profile pic"
                   />
                 </button>

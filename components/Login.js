@@ -1,4 +1,5 @@
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 // On browser,
 export default function Login({ providers }) {
@@ -6,19 +7,20 @@ export default function Login({ providers }) {
     <div className="flex flex-grow justify-center align-middle min-h-screen h-full w-full bg-[#fbfbfb]">
       <div className="max-w-4xl m-auto flex">
         <div
-          className="hidden lg:flex flex-col items-center mr-0
-      justify-center py-2 pl-14 text-center"
+          className="hidden lg:flex lg:relative flex-col  
+            items-center mr-0 justify-center py-2 pl-14 text-center"
         >
           <img
             priority="true"
+            className="pointer-events-none"
             src="https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/insta-hm-bg.jpg"
             alt=""
-          />
+          ></img>
         </div>
-        <div className="flex flex-col items-center justify-center py-2 px-6 mx-6 lg:pr-14 lg:pl-6 text-center max-w-md">
+        <div className="flex flex-col items-center justify-center py-2 px-6 mx-4 lg:pr-14 lg:pl-6 text-center max-w-md">
           <div className="bg-white items-center border border-gray-200 p-10 flex flex-col justify-center">
             <img
-              className="w-80"
+              className="w-80 pointer-events-none"
               priority="true"
               src="https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/2880px-Instagram_logo.png"
               alt=""
@@ -29,7 +31,7 @@ export default function Login({ providers }) {
             </p>
             <div className="mt-14 mb-6">
               {Object.values(providers).map((provider) => (
-                <div className="" key={provider.name}>
+                <div key={provider.name}>
                   <button
                     className="bg-blue-500 flex-auto inline-flex relative active:scale-95 drop-shadow-md
                 cursor-pointer transition-all duration-100 ease-out text-white

@@ -23,6 +23,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import Moment from "react-moment";
+import Image from "next/image";
 
 function Post({ id, username, userImg, img, caption, timestamp }) {
   const { data: session } = useSession();
@@ -38,7 +39,7 @@ function Post({ id, username, userImg, img, caption, timestamp }) {
         query(collection(db, "posts", id, "comments"), orderBy("timestamp")),
         (snapshot) => setComments(snapshot.docs)
       ),
-    [db, id]
+    [id]
   );
 
   // on reload, set all the likes from firestore
@@ -47,7 +48,7 @@ function Post({ id, username, userImg, img, caption, timestamp }) {
       onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
         setLikes(snapshot.docs)
       ),
-    [db, id]
+    [id]
   );
 
   // on reload, set hasLiked for all the posts
@@ -56,7 +57,7 @@ function Post({ id, username, userImg, img, caption, timestamp }) {
       setHasLiked(
         likes.findIndex((like) => like.id === session?.user?.uid) !== -1
       ),
-    [likes]
+    [likes, session?.user?.uid]
   );
 
   // on like button onClick, add the uid to the liked list on firestore for this post
@@ -92,15 +93,19 @@ function Post({ id, username, userImg, img, caption, timestamp }) {
       {/* post header */}
       <div className="flex items-center p-3">
         <div>
-          <img
-            src={userImg}
-            className="rounded-full h-12 w-12
-            object-contain border p-1 mr-3"
-            alt=""
-          />
+          <div className="border rounded-full mr-2">
+            <div className="relative w-12 h-12 m-[2px]">
+              <Image
+                className="rounded-full object-contain"
+                src={userImg}
+                layout="fill"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
         <div className="flex-1">
-          <p className="flex-1 font-bold">{username}</p>
+          <p className="flex-1 font-bold text-gray-700">{username}</p>
           <Moment fromNow className="text-xs">
             {timestamp?.toDate()}
           </Moment>
@@ -108,6 +113,20 @@ function Post({ id, username, userImg, img, caption, timestamp }) {
         <DotsHorizontalIcon className="h-5 cursor-pointer" />
       </div>
 
+      {/* <div className="">
+        <div className="relative w-[670px]">
+          <Image
+            className="object-contain object-top"
+            src={img}
+            layout="responsive"
+            width={670}
+            height={1000}
+            blurDataURL={img}
+            placeholder="blur"
+            alt=""
+          />
+        </div>
+      </div> */}
       <img src={img} className="object-cover w-full" alt="" />
 
       {/* Buttons */}
@@ -142,11 +161,14 @@ function Post({ id, username, userImg, img, caption, timestamp }) {
         <div className="ml-8 h-18 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
           {comments.map((comment) => (
             <div key={comment.id} className="flex items-center space-x-2 mb-3">
-              <img
-                className="h-7 rounded-full"
-                src={comment.data().userImage}
-                alt=""
-              />
+              <div className="relative w-7 h-7">
+                <Image
+                  className="rounded-full"
+                  src={comment.data().userImage}
+                  layout="fill"
+                  alt="profile pic"
+                />
+              </div>
               <p className="text-sm flex-1">
                 <span className="font-bold"> {comment.data().username}</span>
                 <span className="ml-2">{comment.data().comment}</span>

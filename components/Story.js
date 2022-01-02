@@ -1,14 +1,21 @@
+import Image from "next/image";
+
 function Story({ img, username }) {
   return (
     <div>
-      <img
-        className="h-14 w-14 rounded-full 
-        p-[1.5px] border-red-500 border-2 
-        object-contain cursor-pointer hover:scale-110 
-        transition transform duration-200 ease-out"
-        src={img}
-        alt={username}
-      />
+      <div
+        className="border-red-500 border-2 rounded-full 
+        hover:scale-110 transition transform duration-200 ease-out"
+      >
+        <div className="relative w-12 h-12 p-[1.5px] m-[2px]">
+          <Image
+            className="rounded-full object-contain cursor-pointer"
+            src={img}
+            layout="fill"
+            alt={username}
+          />
+        </div>
+      </div>
       <p className="text-xs w-14 truncate text-center">{username}</p>
     </div>
   );
