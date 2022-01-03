@@ -9,6 +9,7 @@ function Story({ img, username }) {
       >
         <div className="relative w-12 h-12 p-[1.5px] m-[2px]">
           <Image
+            priority="true"
             className="rounded-full object-contain cursor-pointer"
             src={img}
             layout="fill"

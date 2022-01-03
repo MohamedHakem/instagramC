@@ -1,7 +1,7 @@
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
-function MiniProfile() {
+export default function MiniProfile() {
   const { data: session } = useSession();
 
   return (
@@ -9,6 +9,7 @@ function MiniProfile() {
       <div className="border border-gray-200 rounded-full">
         <div className="relative w-[58px] h-[58px] m-[2px]">
           <Image
+            priority="true"
             className="rounded-full"
             src={session?.user?.image}
             layout="fill"
@@ -27,5 +28,3 @@ function MiniProfile() {
     </div>
   );
 }
-
-export default MiniProfile;
