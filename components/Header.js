@@ -82,6 +82,7 @@ export default function Header() {
                   onClick={() => setShow(!show)}
                 >
                   <Image
+                    priority="true"
                     className="rounded-full cursor-pointer z-10"
                     src={session?.user?.image}
                     layout="fill"
