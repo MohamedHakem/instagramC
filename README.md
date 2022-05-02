@@ -48,4 +48,3 @@
 - Like posts.
 - Everything is stored on Firebase Store.
 - Session stored in browser so you signin just one time and it'll be saved.
-
