@@ -9,21 +9,42 @@ export default function Home({ providers }) {
   const { data: session } = useSession();
 
   return (
-    <div className="bg-back_bg h-screen overflow-y-auto">
+    <>
       <Head>
-        <title>Instagram clone by Hakem</title>
+        <title>Instagram Retouch by Hakem</title>
+        <meta name="description" content="Instagram clone by Hakem" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="preconnect"
+          href="https://firebasestorage.googleapis.com"
+          crossOrigin="true"
+        />
+        <link
+          rel="preconnect"
+          href="https://raw.githubusercontent.com"
+          crossOrigin="true"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://firebasestorage.googleapis.com"
+        />
+        <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
+        <link rel="dns-prefetch" href="lh3.googleusercontent.com" />
+        <link rel="dns-prefetch" href="avatars.githubusercontent.com" />
+        <link rel="dns-prefetch" href="platform-lookaside.fbsbx.com" />
       </Head>
-      {!session ? (
-        <Login providers={providers} />
-      ) : (
-        <>
-          <Header />
-          <Feed />
-          <Modal />
-        </>
-      )}
-    </div>
+      <div className="bg-back_bg h-screen overflow-y-auto">
+        {!session ? (
+          <Login providers={providers} />
+        ) : (
+          <>
+            <Header />
+            <Feed />
+            <Modal />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

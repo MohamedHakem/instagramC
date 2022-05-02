@@ -109,7 +109,7 @@ function Stories() {
     <div
       className="flex space-x-1 p-4 pb-6 md:mb-8 px-3 gap-x-2 bg-white md:max-w-2xl m-auto
       md:mt-8 border-gray-200 md:border border-b rounded-sm overflow-x-scroll 
-        scrollbar-thin scrollbar-thumb-gray-400"
+        scrollbar-thin scrollbar-thumb-gray-400 cursor-grabbing"
     >
       {session && (
         <Story img={session.user.image} username={session.user.username} />

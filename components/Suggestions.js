@@ -1,39 +1,60 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const suggestions = [
   {
     username: "Skylar.Schmitt36",
     id: 0,
     avatar:
-      "https://raw.githubusercontent.com/MohamedHakem/InstaFrame/main/AI-fake-faces/photo-by-face-generator_61b27e87b15cc4000ef94cde.jpg",
+      "https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/ai-face-5.jpg",
   },
   {
     username: "Helga_Stokes82",
     id: 1,
     avatar:
-      "https://raw.githubusercontent.com/MohamedHakem/InstaFrame/main/AI-fake-faces/photo-by-face-generator_61b27f00b15cc4000d99f432.jpg",
+      "https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/ai-face-11.jpg",
   },
   {
     username: "Vernie.Rogahn30",
     id: 2,
     avatar:
-      "https://raw.githubusercontent.com/MohamedHakem/InstaFrame/main/AI-fake-faces/photo-by-face-generator_61b27f722c575f000dc6b85d.jpg",
+      "https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/ai-face-4.jpg",
   },
   {
     username: "Bennie_Leuschke8",
     id: 3,
     avatar:
-      "https://raw.githubusercontent.com/MohamedHakem/InstaFrame/main/AI-fake-faces/photo-by-face-generator_61b27fdcb15cc4000d99f458.jpg",
+      "https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/ai-face-7.jpg",
   },
   {
     username: "Helga_Stokes82",
     id: 4,
     avatar:
-      "https://raw.githubusercontent.com/MohamedHakem/InstaFrame/main/AI-fake-faces/photo-by-face-generator_61b27f00b15cc4000d99f432.jpg",
+      "https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/ai-face-9.jpg",
   },
 ];
 
-function Suggestions() {
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 2.0,
+      staggerChildren: 5.0,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
+export default function Suggestions() {
   return (
     <div className="mt-4">
       <div className="flex justify-between text-sm mb-3">
@@ -46,6 +67,7 @@ function Suggestions() {
       {suggestions.map((profile) => (
         <div
           key={profile.id}
+          variants={item}
           className="flex items-center justify-between mt-3"
         >
           <div className="border rounded-full">
@@ -70,5 +92,3 @@ function Suggestions() {
     </div>
   );
 }
-
-export default Suggestions;
