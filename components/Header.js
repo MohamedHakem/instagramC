@@ -30,7 +30,9 @@ export default function Header() {
           <Image
             priority="true"
             src="https://raw.githubusercontent.com/MohamedHakem/assets/main/instagramc/2880px-Instagram_logo.png"
-            layout="fill"
+            layout="fixed"
+            width={96}
+            height={38}
             objectFit="contain"
             alt=""
           />
@@ -62,11 +64,9 @@ export default function Header() {
               <div className="relative navBtn cursor-pointer">
                 <PaperAirplaneIcon className="navBtn h-7 rotate-45 z-10" />
                 <div
-                  className="absolute -top-1 
-                -right-2 text-xs w-5 h-5
-                bg-red-500 rounded-full 
-                flex justify-center animate-pulse
-                text-white"
+                  className="absolute -top-[6px] text-white animate-pulse
+                  -right-[10px] text-xs w-[22px] h-[22px] bg-red-500 rounded-full 
+                  flex justify-center items-center m-auto"
                 >
                   3
                 </div>
@@ -85,7 +85,9 @@ export default function Header() {
                     priority="true"
                     className="rounded-full cursor-pointer z-10"
                     src={session?.user?.image}
-                    layout="fill"
+                    layout="fixed"
+                    width={32}
+                    height={32}
                     alt="profile pic"
                   />
                 </button>

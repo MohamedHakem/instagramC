@@ -2,7 +2,10 @@ import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
 import { RecoilRoot } from "recoil";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+export default function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   return (
     <SessionProvider session={session}>
       <RecoilRoot>
@@ -12,8 +15,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   );
 }
 
-export default MyApp;
-
 export async function getServerSideProps(ctx) {
   return {
     props: {
@@ -21,3 +22,11 @@ export async function getServerSideProps(ctx) {
     },
   };
 }
+
+// export function reportWebVitals(metric) {
+//   if (metric.label === "custom") {
+//     console.log(metric);
+//   } else {
+//     console.log(metric);
+//   }
+// }

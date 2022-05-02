@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
+import Image from "next/image";
 
 export default function Modal() {
   const { data: session } = useSession();
@@ -21,6 +22,7 @@ export default function Modal() {
   const [selectedFile, setSelectedFile] = useState(null);
   const captionRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const wh = "100%";
 
   const uploadPost = async () => {
     if (loading) return;
@@ -123,57 +125,63 @@ export default function Modal() {
                 </div>
                 <hr />
 
-                {selectedFile ? (
-                  <img
-                    className="w-full object-contain cursor-pointer"
-                    onClick={() => setSelectedFile(null)}
-                    src={selectedFile}
-                    alt=""
-                  />
-                ) : (
-                  <div className="pt-6 pb-2">
-                    <div
-                      onClick={() => filePickerRef.current.click()}
-                      className="mx-auto flex items-center 
+                <div className="border-b border-gray-300">
+                  {selectedFile ? (
+                    <div className="bg-black border-b-0 border-t-0 border-black">
+                      <Image
+                        className="cursor-pointer"
+                        onClick={() => setSelectedFile(null)}
+                        src={selectedFile}
+                        layout="responsive"
+                        objectFit="contain"
+                        width={wh}
+                        height={wh}
+                        alt=""
+                      />
+                    </div>
+                  ) : (
+                    <div className="pt-6 pb-2">
+                      <div
+                        onClick={() => filePickerRef.current.click()}
+                        className="mx-auto flex items-center 
                   justify-center h-20 w-20 rounded-full 
                   bg-red-100 cursor-pointer"
-                    >
-                      <div className="h-12 w-12">
-                        <CameraIcon
-                          className="text-red-600"
-                          aria-hidden="true"
-                        />
+                      >
+                        <div className="h-12 w-12">
+                          <CameraIcon
+                            className="text-red-600"
+                            aria-hidden="true"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                <div>
-                  <div className="text-center mt-2 sm:mt-2">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-lg leading-6 front-medium text-gray-900"
-                    >
-                      Upload a photo
-                    </Dialog.Title>
+                  <div>
+                    {!selectedFile ? (
+                      <div className="text-center mt-2 mb-6 sm:mt-2">
+                        <div className="text-lg leading-6 front-medium text-gray-900">
+                          Upload a photo
+                        </div>
+                      </div>
+                    ) : null}
+                    <div>
+                      <input
+                        ref={filePickerRef}
+                        type="file"
+                        hidden
+                        onChange={addImageToPost}
+                      />
+                    </div>
                   </div>
-                  <div className=" mt-7 ">
-                    <input
-                      ref={filePickerRef}
-                      type="file"
-                      hidden
-                      onChange={addImageToPost}
-                    />
-                  </div>
-
-                  <div className="mt-2">
-                    <input
-                      className="border-none focus:ring-0 w-full text-center"
-                      type="text"
-                      ref={captionRef}
-                      placeholder="Write a caption..."
-                    />
-                  </div>
+                </div>
+                <div className="mt-1">
+                  <input
+                    className="border-none focus:ring-0 w-full text-center"
+                    type="text"
+                    ref={captionRef}
+                    placeholder="Write a caption..."
+                  />
                 </div>
                 <div className="mx-10">
                   <div className="mt-5 sm:mt-6 mx-auto">
@@ -182,8 +190,8 @@ export default function Modal() {
                       disabled={!selectedFile}
                       onClick={uploadPost}
                       className="inline-flex justify-center w-full relative rounded-md 
-                border border-transparent shadow-sm px-4 py-3 bg-blue-400
-                text-base font-medium text-white hover:bg-red-700
+                border border-transparent shadow-sm px-4 py-3 bg-blue-600
+                text-base font-medium text-white hover:bg-blue-500
                 focus:outline-none focus:ring-2 focus:ring-offset-2
               focus:ring-red-500 sm:text-sm disabled:bg-gray-300
               disabled:cursor-not-allowed hover:disabled:bg-gray-300"

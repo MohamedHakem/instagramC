@@ -12,7 +12,9 @@ export default function MiniProfile() {
             priority="true"
             className="rounded-full"
             src={session?.user?.image}
-            layout="fill"
+            layout="fixed"
+            width={58}
+            height={58}
             alt="profile pic"
           />
         </div>
