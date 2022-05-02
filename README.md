@@ -63,7 +63,7 @@ https://user-images.githubusercontent.com/29775958/146556722-52b53acb-5399-4abd-
 - Session stored in browser so you signin just one time and it'll be saved.
 
 ## How to use
-Go to https://instaframe.vercel.app and sign in with a google account. <br/>
+Go to https://instagramc.vercel.app and sign in with a google account. <br/>
 You can post, like, comment as you like it's a free account. Enjoy!
 
 ## Use on your local machine
