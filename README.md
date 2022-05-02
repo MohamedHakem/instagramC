@@ -48,3 +48,25 @@
 - Like posts.
 - Everything is stored on Firebase Store.
 - Session stored in browser so you signin just one time and it'll be saved.
+
+
+## How to use
+Go to https://instagramc.vercel.app and sign in with a google account. <br/>
+You can post, like, comment as you like it's a free account. Enjoy!
+
+## Use on your local machine
+- Fork this repo
+- Clone your forked repo to your machine
+- Execute the 2 following commands to run locally:
+```bash
+npm install
+npm run dev
+```
+- Open your browser on localhost:3000
+
+
+## Deploy on your own Vercel instance 
+<br/>
+
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/MohamedHakem/InstaFrame)
+
