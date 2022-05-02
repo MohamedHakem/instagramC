@@ -5,7 +5,7 @@
 <p align="center">
     <p align="center">A Full-stack, fully responsive instagram-like app.</p>
     <p align="center"> Only for educational purposes.</p>
-    <p align="center">
+    <p align="center"> 
       <a href="https://instagramc.vercel.app/">Live Demo</a>
       ·
       <a href="https://github.com/MohamedHakem/instagramc/issues/new/choose">Request Feature</a>
